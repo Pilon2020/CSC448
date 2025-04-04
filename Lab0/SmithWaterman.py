@@ -1,5 +1,10 @@
-# Oliver Pilon
-# Date: 2022-02-15
+"""
+
+CSC448 - Bioinformatics
+Smith-Waterman Alignment Algorithm
+@Author: Oliver Pilon
+
+"""
 
 # Library Imports
 import numpy as np      #NumPy Documentation Link: https://numpy.org/doc/2.2/numpy-user.pdf       
