@@ -10,6 +10,7 @@ import numpy as np      #NumPy Documentation Link: https://numpy.org/doc/2.2/num
 import scipy as sp      #SciPy Documentation Link: https://docs.scipy.org/doc/scipy/tutorial/index.html#user-guide
 import sklearn as sk    #sklearn Documentation Link: https://scikit-learn.org/stable/user_guide.html
 import blosum as bl
+import requests
 
 # Use BLOSUM62 from https://github.com/not-a-feature/blosum
 matrix = bl.BLOSUM(62)
@@ -18,13 +19,17 @@ matrix = bl.BLOSUM(62)
 sequence_data = []
 gap_penalty = -12 #From Project description
 
+url = 'https://raw.githubusercontent.com/CalPoly-MLBio/CSC448_Spring2025/refs/heads/main/data/protein_sequences.txt'
+
+response = requests.get(url)
+
+
 ## LOADING DATA SECTION
 #Load in data set
-with open("C:/Users/pilon/Downloads/protein_sequences.txt", "r") as file:
-    for line in file:
-        parts = line.strip().split('\t')
-        if len(parts) == 2:
-            sequence_data.append((parts[0], parts[1]))
+for line in response.text.strip().split('\n'):
+    parts = line.strip().split('\t')
+    if len(parts) == 2:
+        sequence_data.append((parts[0], parts[1]))
             
 sequence_array = np.array(sequence_data, dtype=object)
 
@@ -75,4 +80,16 @@ for i in range(len(sequence_array)):
         seq2 = sequence_array[j][1] #String 2 of DNA for comparison 
         normalized = normalize(seq1, seq2)
         sim_scores[i][j] = float(normalized)
+
+# ## Small Scale Testing
+# size = 4
+# sim_scores = [[0 for _ in range(size)] for _ in range(size)]
+
+# for i in range(size):
+#     for j in range(size):
+#         seq1 = sequence_array[i][1] #String 1 of DNA for comparison  
+#         seq2 = sequence_array[j][1] #String 2 of DNA for comparison 
+#         normalized = normalize(seq1, seq2)
+#         sim_scores[i][j] = float(normalized)
+        
 print(sim_scores)
