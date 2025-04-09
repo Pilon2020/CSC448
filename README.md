@@ -12,5 +12,6 @@ I have been able to get it to work with a basic gap penalty but as soon as I add
 ## [Project 1](https://github.com/Pilon2020/CSC448/tree/main/Lab1)  
 Project 1 - Sequences and Evolutionary Trees  
 Using the Smith-Waterman Algorithm I worked on last time, while adding the BLOSUM62 weighting system in allows me to accurately score the similarities between protien strings.  
-- Scores are normalized by dividing the compared Smith-Waterman (SW) score by the largest SW score produced when comparing the same string: SW(S~i~,S~j~) / max(SW(S~i~,S~i~),SW(S~j~,S~j~))
-- The normalized scores were then stored in an array.
+- Scores are normalized by dividing the compared Smith-Waterman (SW) score by the largest SW score produced when comparing the same string: SW(S<sub>i</sub>,S<sub>j</sub>) / max(SW(S<sub>i</sub>,S<sub>i</sub>),SW(S<sub>j</sub>,S<sub>j</sub>))
+- The normalized scores were then stored in an array.  
+Still need to implament a clustering algorithm to construct a phylogenic tree.
