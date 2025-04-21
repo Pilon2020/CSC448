@@ -113,12 +113,13 @@ with tqdm(total=total_iterations, desc="Computing distance scores") as pbar:
             dist = 1 - float(normalized)
             dist_scores[i][j] = dist
             dist_scores[j][i] = dist
-            np.savetxt("nSW_scores_2.csv", np.array(norm_scores), delimiter=",")
             pbar.update(1)
+        np.savetxt("nSW_scores_2.csv", np.array(norm_scores), delimiter=",")
+
 
 
 # Silhouette score vs. number of clusters
-linkage_type = 'average'  # options: 'ward', 'complete', 'average', 'single'
+linkage_type = 'complete'  # options: 'ward', 'complete', 'average', 'single'
 cluster_range = range(2, min(15, num_sequences))
 
 # Silhouette analysis
