@@ -13,5 +13,12 @@ I have been able to get it to work with a basic gap penalty but as soon as I add
 Project 1 - Sequences and Evolutionary Trees  
 Using the Smith-Waterman Algorithm I worked on last time, while adding the BLOSUM62 weighting system in allows me to accurately score the similarities between protien strings.  
 - Scores are normalized by dividing the compared Smith-Waterman (SW) score by the largest SW score produced when comparing the same string: SW(S<sub>i</sub>,S<sub>j</sub>) / max(SW(S<sub>i</sub>,S<sub>i</sub>),SW(S<sub>j</sub>,S<sub>j</sub>))
-- The normalized scores were then stored in an array.  
-Still need to implament a clustering algorithm to construct a phylogenic tree.
+- The normalized scores were then stored in an array, and saved as a CSV for later processing.  
+
+Prior to creating the dendrogram, a sweep was performed to find the silhouette score per number of clusters (k) and allowed me to produce this graph:  
+![`Silhouette Scores`](https://github.com/Pilon2020/CSC448/blob/79405e3347275aad0e7460ed8fc0f35c6fe45a81/Lab1/SilhouetteScores_average.png?raw=true)  
+I then used this information to generate my dendrogram. In both of these cases I was working with a clustering algorithm that was based on the average distance between clusters, and I produced this dendrogram with a cutoff at about 0.25, with 8 clusters at that point.    
+![`Silhouette Scores`](https://github.com/Pilon2020/CSC448/blob/79405e3347275aad0e7460ed8fc0f35c6fe45a81/Lab1/Dendrogram_Average.png?raw=true)  
+
+## [Project 2](https://github.com/Pilon2020/CSC448/tree/main/Lab2) 
+Project 2 - Wine Making Yeast
